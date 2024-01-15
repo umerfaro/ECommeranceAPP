@@ -1,3 +1,5 @@
+
+import 'package:emart_app/Views/HomeStructure/HomeStructureScreen.dart';
 import 'package:emart_app/WidgetCommons/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -82,26 +84,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     5.heightBox,
                     Hero(
-                      tag: 'signup_button', // Unique tag for SignUpScreen
+                      tag: 'Login_button', // Unique tag for SignUpScreen
                       child: customButtonWidget(
-                        onPress: () {},
+                        onPress: (
+                            ) {
+
+                          Get.to(() => const Home());
+                        },
                         title: login,
                         textColor: whiteColor,
                         color: redColor,
                       )
                           .box
                           .width(context.screenWidth - 50)
-                          .make()
-                          .onTap(() {
-                        // Navigate to SignUpScreen with a smooth transition
-                        Get.to(() => const SignUpScreen());
-                      }),
+                          .make(),
                     ),
                     5.heightBox,
                     dontHaveAccount.text.color(fontGrey).make(),
                     5.heightBox,
                     Hero(
-                      tag: 'signup_text', // Unique tag for SignUpScreen
+                      tag: 'SignUP_button', // Unique tag for SignUpScreen
                       child: customButtonWidget(
                         onPress: () {
                           // Navigate to SignUpScreen with a smooth transition

@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 const appname = "eMart";
 const appversion = "Version 1.0.0";
 const credits = "@UmerFarooq";
@@ -23,4 +25,5 @@ const agreeTo = "I agree to the ";
 const loginWithPhone = "Login with Phone";
 const sendOtp = "Send OTP";
 
+const home = "Home", cart = "Cart", category = "Category", account = "Account";
 
