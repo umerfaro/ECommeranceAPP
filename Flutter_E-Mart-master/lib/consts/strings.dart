@@ -9,7 +9,7 @@ const password = "Password";
 const passwordHint = "*******";
 const login = "Login";
 const forgotPassword = "Forgot Password";
-const signUp= "Sign Up";
+const signUp = "Sign Up";
 const dontHaveAccount = "Don't have an account?";
 const alreadyHaveAccount = "Already have an account? ";
 const loginWith = "Log In with";
@@ -26,4 +26,25 @@ const loginWithPhone = "Login with Phone";
 const sendOtp = "Send OTP";
 
 const home = "Home", cart = "Cart", category = "Category", account = "Account";
+
+//home screen strings
+const search = "Search";
+const todayDeals = "Today's Deals",
+  todaysdeal = "Today's Deal",flashSale = "Flash Sale",flashsale = "Flash Sale",flash = "Flash",sale = "Sale",flashSaleEndsIn = "Flash Sale Ends in";
+const seeAll = "See All";
+const topCategories = "Top Categories";
+const brands = "Brands";
+const featuredCategories = "Featured Categories";
+const topSeller = "Top Seller";
+const featuredProducts = "Featured Products";
+///featured categories
+const womenDress= "Women Dress",
+    girlsWatches= "Girls Watches",
+mobilePhone="Mobile Phone",
+boysGlasses="Boys Glasses",
+tShirts="TShirts",
+girlsDress="Girls Dress"
+
+;
+
 

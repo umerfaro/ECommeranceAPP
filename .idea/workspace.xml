@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560d44e0-d1ca-4689-8a61-b1244a8f3af8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/HomeContoller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/AccountScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/CartScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/CategoryScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/HomeScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeStructure/HomeStructureScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/assets/icons/fe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/Components/Featursbuttons.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/WidgetCommons/HomeButtons.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/authScreen/Login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/authScreen/Login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/HomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/HomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/images.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +45,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -86,5 +85,8 @@
       <updated>1705227298209</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

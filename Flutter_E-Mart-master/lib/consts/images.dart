@@ -52,6 +52,7 @@ const icWholeSale = "assets/icons/wholesale.png";
 //images
 
 const imgBackground = "assets/icons/bg.png";
+const imgFe = "assets/icons/fe.png";
 const imgB1 = "assets/images/b1.jpeg";
 const imgB2 = "assets/images/b2.jpeg";
 const imgB3 = "assets/images/b3.jpeg";
