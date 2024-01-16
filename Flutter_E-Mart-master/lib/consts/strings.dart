@@ -44,7 +44,18 @@ mobilePhone="Mobile Phone",
 boysGlasses="Boys Glasses",
 tShirts="TShirts",
 girlsDress="Girls Dress"
-
 ;
+///
+/// category List
+const womenClothing ="Women Clothing",
+menClothingFashion = "Men Clothing & Fashion",
+compAccess="Computer & Accessories",
+automobile = "Automobile",
+kidtoys="Kids & Toys",
+sports= "Sports" ,
+jewelery="Jewelery",
+cellphone="Cell Phone",
+furniture="Furniture";
 
-
+const video = "Video",reviews="Reviews",sellerPolicy="Seller policy",returnPolicy="Return Policy",supportPolicy="Support Policy";
+const productYouMayLike="Products you may like";

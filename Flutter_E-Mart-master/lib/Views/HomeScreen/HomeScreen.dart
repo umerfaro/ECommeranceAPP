@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                  aspectRatio: 16 / 9,
                  autoPlay: true,
                  autoPlayAnimationDuration: 1.seconds,
-                 height: 130,
+                 height: 150,
                  enlargeCenterPage: true,
                  itemCount: sliderList.length,
                  itemBuilder: (context, index) {
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                  aspectRatio: 16 / 9,
                  autoPlay: true,
                  autoPlayAnimationDuration: 1.seconds,
-                 height: 130,
+                 height: 150,
                  enlargeCenterPage: true,
                  itemCount: secondSliderList.length,
                  itemBuilder: (context, index) {
@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                  physics: const NeverScrollableScrollPhysics(),
                  itemCount: 6,
                    shrinkWrap: true,
-                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                        crossAxisCount: 2,mainAxisSpacing: 8,
                      crossAxisSpacing: 8,
                      mainAxisExtent: 300

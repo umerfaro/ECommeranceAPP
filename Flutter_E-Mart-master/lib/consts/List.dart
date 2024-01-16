@@ -36,3 +36,18 @@ const featuredProductTitle =[
 const featuredProductPrice =[
   "\$ 20.00","\$ 30.00","\$ 40.00","\$ 50.00","\$ 60.00","\$ 70.00",
 ];
+
+///
+/// category List
+const nameListCategories=[
+womenDress,menClothingFashion,compAccess,automobile,kidtoys,sports,jewelery,cellphone,furniture
+];
+const categoryListPic =[
+
+  imgFc1,imgFc2,imgFc3,imgFc4,imgFc5,imgFc6,imgFc7,imgFc8,imgFc9
+];
+
+//
+const listOfDetails=[
+ video,reviews,sellerPolicy,returnPolicy,supportPolicy
+];
