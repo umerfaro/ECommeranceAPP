@@ -48,7 +48,7 @@ const icTwitterLogo = "assets/icons/twitter_logo.png";
 const icWallet = "assets/icons/wallet.png";
 const icWhiteTick = "assets/icons/white_tick.png";
 const icWholeSale = "assets/icons/wholesale.png";
-
+const emptyCart = "assets/icons/emptyCart.png";
 //images
 
 const imgBackground = "assets/icons/bg.png";
@@ -129,3 +129,4 @@ const imgStripe = "assets/images/stripe.png";
 const imgTwocheckout = "assets/images/twocheckout.png";
 const imgVogue = "assets/images/vogue.png";
 const imgWallet = "assets/images/wallet.png";
+

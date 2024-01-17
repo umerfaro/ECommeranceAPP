@@ -24,6 +24,11 @@ const termsAndConditions = "Terms & Conditions";
 const agreeTo = "I agree to the ";
 const loginWithPhone = "Login with Phone";
 const sendOtp = "Send OTP";
+const logout="Log Out";
+const editProfile="Edit Profile";
+const myOrders="you Ordered";
+const wishlist="In your Wishlist";
+const incart="In your Cart";
 
 const home = "Home", cart = "Cart", category = "Category", account = "Account";
 
@@ -59,3 +64,8 @@ furniture="Furniture";
 
 const video = "Video",reviews="Reviews",sellerPolicy="Seller policy",returnPolicy="Return Policy",supportPolicy="Support Policy";
 const productYouMayLike="Products you may like";
+const cartEmpty="Your Cart is Empty";
+const cartEmptyMsg="Looks like you haven\'t added anything to your cart yet";
+
+//profiles
+const wishList= "My WishList",orders="My Orders",coupon="Coupon",messages="Messages",changePassword="Change Password";

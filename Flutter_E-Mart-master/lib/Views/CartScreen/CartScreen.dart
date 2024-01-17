@@ -10,7 +10,24 @@ class _HomeScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      color: Colors.lightBlue,
+      color: textfieldGrey,
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const CircleAvatar(
+              radius: 100.0,
+              backgroundImage:
+              AssetImage(emptyCart),
+            ),
+            20.heightBox,
+            cartEmpty.text.size(20).fontFamily(semibold).color(darkFontGrey).make(),
+           20.heightBox,
+            cartEmptyMsg.text.size(16).fontFamily(regular).align(TextAlign.center).color(redColor).make(),
+
+          ]),
+
+
     );
   }
 }

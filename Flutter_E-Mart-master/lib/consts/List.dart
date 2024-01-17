@@ -51,3 +51,10 @@ const categoryListPic =[
 const listOfDetails=[
  video,reviews,sellerPolicy,returnPolicy,supportPolicy
 ];
+
+const profileList= [
+ wishList,orders,coupon,messages
+];
+const profileListIcon= [
+  icHeart,icOrders,icCoupon,icMessages
+];
