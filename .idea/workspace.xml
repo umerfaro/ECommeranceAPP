@@ -5,15 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560d44e0-d1ca-4689-8a61-b1244a8f3af8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/assets/icons/emptyCart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/Conponents/detailsPorfile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/android/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/android/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/android/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/android/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/android/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/appstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppIcons/playstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/FireBase_const.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/AccountScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/AccountScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/CartScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/CartScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/colors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/images.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/consts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/consts.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +78,11 @@
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Flutter project\Flutter_E-Mart-master\Flutter_E-Mart-master\android\app" />
+    </key>
+  </component>
   <component name="RunManager" selected="Flutter.Unnamed">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="Flutter_E-Mart-master" />
