@@ -1,3 +1,4 @@
+import 'package:emart_app/viewModel/Services/Splash_services.dart';
 import 'package:flutter/material.dart';
 import 'package:emart_app/WidgetCommons/appLogo_widget.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -13,16 +14,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  ChangeScreen() {
-    Future.delayed(const Duration(seconds: 3), () {
-      //using get package
-      Get.off(() => const LoginScreen());
-    });
-  }
+
+
+  SplashServices splashServices = SplashServices();
+
 
   @override
   void initState() {
-    ChangeScreen();
+    splashServices.isLogin(context);
     super.initState();
   }
 

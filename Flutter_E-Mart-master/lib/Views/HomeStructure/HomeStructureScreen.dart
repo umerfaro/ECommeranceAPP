@@ -1,9 +1,11 @@
+
 import 'package:emart_app/Controller/HomeContoller.dart';
 import 'package:emart_app/Views/AccountScreen/AccountScreen.dart';
 import 'package:emart_app/Views/CartScreen/CartScreen.dart';
 import 'package:emart_app/Views/CategoryScreen/CategoryScreen.dart';
 import 'package:emart_app/Views/HomeScreen/HomeScreen.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -33,14 +35,33 @@ class _HomeState extends State<Home> {
     ];
 
     return  Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Obx(()=>
-                navBody.elementAt(controller.currentIndex.value)
+      body: PopScope(
+        canPop: true  ,
+
+        onPopInvoked: (didPop) {
+          // Handle back button press
+          if (didPop)
+          {
+
+            SystemNavigator.pop();
+
+            // Pop was successful
+            // Perform any action you want when the back button is pres
+          } else {
+            // Pop was not successful
+            // Maybe show a snackbar or perform another action
+          }
+        },
+
+        child: Column(
+          children: [
+            Expanded(
+              child: Obx(()=>
+                  navBody.elementAt(controller.currentIndex.value)
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: Obx(()=>
          BottomNavigationBar(

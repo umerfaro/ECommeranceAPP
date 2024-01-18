@@ -41,6 +41,10 @@ dependencies:
   firebase_storage: ^11.6.0
   cloud_firestore: ^4.14.0
   shared_preferences: ^2.2.2
+  fluttertoast: ^8.2.4
+  another_flushbar: ^1.12.30
+  google_sign_in:
+
 
 
 

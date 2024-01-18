@@ -5,16 +5,17 @@ Widget customButtonWidget({
   String? title,
   textColor,
   color,
+  bool loading = false,
 }) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
       padding: const EdgeInsets.all(12),
     ),
-    onPressed: () {
-      // Invoke the onPress function
-      onPress();
-    },
-    child: title!.text.color(textColor).fontFamily(bold).make(),
+    onPressed: loading ? null : onPress,
+    child:loading ? const RepaintBoundary(
+        child: CircularProgressIndicator(
+          color: whiteColor,
+        ))   :  title!.text.color(textColor).fontFamily(bold).make(),
   );
 }

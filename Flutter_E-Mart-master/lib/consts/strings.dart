@@ -69,3 +69,7 @@ const cartEmptyMsg="Looks like you haven\'t added anything to your cart yet";
 
 //profiles
 const wishList= "My WishList",orders="My Orders",coupon="Coupon",messages="Messages",changePassword="Change Password";
+
+const logOut="User logout Successfully";
+const loginSuccess="User Login Successfully";
+const loginFailed="User Login Failed";

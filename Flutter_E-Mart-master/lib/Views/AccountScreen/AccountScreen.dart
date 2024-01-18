@@ -1,7 +1,12 @@
+import 'package:emart_app/Controller/auth_Controller.dart';
+import 'package:emart_app/Utils/Utils.dart';
 import 'package:emart_app/Views/AccountScreen/Conponents/detailsPorfile.dart';
+import 'package:emart_app/Views/authScreen/Login_screen.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/viewModel/Services/Session%20manager.dart';
+import 'package:get/get.dart';
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 
@@ -10,6 +15,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<AccountScreen> {
+
   @override
   Widget build(BuildContext context) {
     return  bgWidget(Scaffold(
@@ -87,8 +93,12 @@ class _HomeScreenState extends State<AccountScreen> {
                 ),
                 backgroundColor: redColor, // Set the background color here
               ),
-              onPressed: () {
+              onPressed: () async {
                 // Your onPressed logic here
+                await Get.put(AuthController()).signOutMethod();
+                Utils.toastMessage(logOut);
+                SessionController().logout();
+                Get.offAll(()=> const LoginScreen());
               },
               child: logout.text.fontFamily(bold).color(lightGrey).make(),
             ),

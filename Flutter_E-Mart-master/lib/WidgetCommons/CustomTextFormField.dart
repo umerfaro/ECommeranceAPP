@@ -5,20 +5,30 @@ Widget customTextFormField(
     String? hint,
     bool? isPassword,
       BuildContext? context,
-    //TextEditingController? controller
+       FocusNode? myFocusNode,
+        FormFieldSetter? onFiledSubmittedValue,
+      FormFieldValidator? onValidateValue,
+      TextEditingController? controller,
+      bool? autoFocus= false
+
     }) {
   return Column(
       crossAxisAlignment: CrossAxisAlignment.start, children: [
     title!.text.color(redColor).fontFamily(semibold).size(16).make(),
     TextFormField(
+
       onTapOutside: (event) {
         FocusScope.of(context!).unfocus();
       },
 maxLines: 1,
-      //controller: controller,
+
+      controller: controller,
+      onFieldSubmitted: onFiledSubmittedValue,
+      validator: onValidateValue,
+      autofocus: autoFocus!,
       obscureText: isPassword!,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
         hintText: hint,
         isDense: true,
         fillColor: lightGrey,
@@ -29,6 +39,13 @@ maxLines: 1,
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: redColor),
         ),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: redColor),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: redColor),
+        ),
+        focusColor: redColor,
 
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: textfieldGrey),
