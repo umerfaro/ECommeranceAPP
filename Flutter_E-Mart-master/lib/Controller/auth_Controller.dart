@@ -111,6 +111,10 @@ class AuthController extends GetxController {
       "photoUrl": " ",
       "signInMethod": authResult.user!.providerData[0].providerId,
       "createdOn": DateTime.now(),
+      "cart_count": "0",
+       "wishList": "0",
+       "orderCount": "0",
+      "PhoneNumber": "NO phone number",
     });
   }
 

@@ -73,3 +73,7 @@ const wishList= "My WishList",orders="My Orders",coupon="Coupon",messages="Messa
 const logOut="User logout Successfully";
 const loginSuccess="User Login Successfully";
 const loginFailed="User Login Failed";
+const changeProfile="Change";
+const update="Update";
+const camera="Camera";
+const gallery="Gallery";

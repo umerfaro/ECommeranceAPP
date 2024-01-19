@@ -52,10 +52,14 @@ class GoogleAuthServices {
           "uid": uid,
           "email":googleUser.email,
           "password": " ",
-          "name": " ",
+          "name": "No name",
           "photoUrl": " ",
           "signInMethod": authResult.user!.providerData[0].providerId,
           "createdOn": DateTime.now(),
+          "cart_count": "0",
+          "wishList": "0",
+          "orderCount": "0",
+          "PhoneNumber": "NO phone number",
           // ... your user data fields ...
         });
 

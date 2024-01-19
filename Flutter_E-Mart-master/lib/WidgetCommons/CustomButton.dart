@@ -15,7 +15,7 @@ Widget customButtonWidget({
     onPressed: loading ? null : onPress,
     child:loading ? const RepaintBoundary(
         child: CircularProgressIndicator(
-          color: whiteColor,
+          valueColor: AlwaysStoppedAnimation(whiteColor),
         ))   :  title!.text.color(textColor).fontFamily(bold).make(),
   );
 }
