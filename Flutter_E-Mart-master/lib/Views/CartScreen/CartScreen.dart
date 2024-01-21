@@ -1,4 +1,6 @@
+
 import 'package:emart_app/consts/consts.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -7,15 +9,19 @@ class CartScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<CartScreen> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Container(
-      color: textfieldGrey,
+      color: lightGrey,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CircleAvatar(
+              backgroundColor: Colors.transparent,
               radius: 100.0,
               backgroundImage:
               AssetImage(emptyCart),
@@ -23,9 +29,11 @@ class _HomeScreenState extends State<CartScreen> {
             20.heightBox,
             cartEmpty.text.size(20).fontFamily(semibold).color(darkFontGrey).make(),
            20.heightBox,
-            cartEmptyMsg.text.size(16).fontFamily(regular).align(TextAlign.center).color(redColor).make(),
+            cartEmptyMsg.text.size(14).fontFamily(semibold).align(TextAlign.center).color(darkFontGrey).make(),
 
-          ]),
+
+          ]
+      ),
 
 
     );

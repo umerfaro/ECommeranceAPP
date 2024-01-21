@@ -2,15 +2,17 @@ import 'package:emart_app/consts/consts.dart';
 
 
 Widget bgWidget(Widget? child){
-  return  Container(
-    decoration:  const BoxDecoration(
-      image: DecorationImage(
-        image:  AssetImage(
-          imgBackground,
+  return  SafeArea(
+    child: Container(
+      decoration:  const BoxDecoration(
+        image: DecorationImage(
+          image:  AssetImage(
+            imgBackground,
+          ),
+          fit: BoxFit.fill,
         ),
-        fit: BoxFit.fill,
       ),
+      child: child,
     ),
-    child: child,
   );
 }

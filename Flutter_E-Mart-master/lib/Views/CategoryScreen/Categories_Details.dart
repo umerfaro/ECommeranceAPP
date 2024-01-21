@@ -1,3 +1,4 @@
+import 'package:emart_app/Controller/ProductController/ProductController.dart';
 import 'package:emart_app/Views/CategoryScreen/ItemDetails.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/List.dart';
@@ -13,6 +14,7 @@ class CategoriesDetails extends StatefulWidget {
 }
 
 class _CategoriesDetailsState extends State<CategoriesDetails> {
+  var categoryController = Get.find<ProductController>();
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
@@ -22,14 +24,15 @@ class _CategoriesDetailsState extends State<CategoriesDetails> {
       body: Container(
           padding: EdgeInsets.all(8),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                      6,
-                      (index) => "banner"
+                      categoryController.subcat.length,
+                      (index) => categoryController.subcat[index].toString()
                           .text
                           .size(12)
                           .fontFamily(semibold)

@@ -77,3 +77,5 @@ const changeProfile="Change";
 const update="Update";
 const camera="Camera";
 const gallery="Gallery";
+const oldPassword="Old Password";
+const newPassword="New Password";

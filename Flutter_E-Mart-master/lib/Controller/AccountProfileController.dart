@@ -71,13 +71,13 @@ class ProfileController extends GetxController {
   }
 
 
-   uploadImage() async {
+  uploadImage() async {
     setLoading2(true);
     var filename= basename(profileImagePath.value);
     var destination = 'images/${currentUser!.uid}/$filename';
- Reference ref = FirebaseStorage.instance.ref().child(destination);
+    Reference ref = FirebaseStorage.instance.ref().child(destination);
     await ref.putFile(File(profileImagePath.value));
-     url = await ref.getDownloadURL();
+    url = await ref.getDownloadURL();
     setLoading2(false);
 
   }

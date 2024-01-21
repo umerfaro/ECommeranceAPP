@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../WidgetCommons/HashRegenrationPassword.dart';
 import '../../utils/Utils.dart';
 import '../Services/Session manager.dart';
 
@@ -47,13 +48,18 @@ class GoogleAuthServices {
 
         SessionController().userId = uid; // Set the user ID in session
 
+        String? photoUrl = googleUser.photoUrl;
+        String? userName = googleUser.displayName;
+        String additionalCredential = CredentialGenerator.generateCredential(googleUser.email);
+
         await _usersCollection.doc(uid).set({
 
           "uid": uid,
           "email":googleUser.email,
           "password": " ",
-          "name": "No name",
-          "photoUrl": " ",
+          "name": userName ?? "No name", // Use Google user name if available, otherwise use "No name"
+          "photoUrl": photoUrl ?? "", // Use Google photo URL if available, otherwise use an empty string
+         "googleGeneratedPassword": additionalCredential, // Store the additional credential for reauthentication
           "signInMethod": authResult.user!.providerData[0].providerId,
           "createdOn": DateTime.now(),
           "cart_count": "0",

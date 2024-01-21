@@ -3,6 +3,8 @@ import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:get/get.dart';
+
+import '../../Controller/ProductController/ProductController.dart';
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
 
@@ -11,6 +13,7 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<CategoryScreen> {
+  var categoryController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -47,6 +50,7 @@ class _HomeScreenState extends State<CategoryScreen> {
                         nameListCategories[index].text.color(darkFontGrey).align(TextAlign.center).make(),
                       ],
                     ).box.white.rounded.clip(Clip.antiAlias).outerShadowSm.make().onTap(() {
+                      categoryController.getSubCat(nameListCategories[index]);
                       Get.to(() => CategoriesDetails(title: nameListCategories[index],));
                   }),
                 );

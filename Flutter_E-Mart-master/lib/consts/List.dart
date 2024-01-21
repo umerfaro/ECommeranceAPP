@@ -44,7 +44,7 @@ womenDress,menClothingFashion,compAccess,automobile,kidtoys,sports,jewelery,cell
 ];
 const categoryListPic =[
 
-  imgFc1,imgFc2,imgFc3,imgFc4,imgFc5,imgFc6,imgFc7,imgFc8,imgFc9
+  imgS10,imgFc1,imgP1,imgFc3,imgFc4,imgFc5,imgS11,imgFc6,imgFc9
 ];
 
 //

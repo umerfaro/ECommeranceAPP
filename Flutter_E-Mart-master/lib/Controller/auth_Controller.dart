@@ -106,6 +106,7 @@ class AuthController extends GetxController {
     await store.set({
       "uid": authResult.user!.uid,
       "email": email,
+      "googleGeneratedPassword": " ", // Store the additional credential for reauthentication
       "password": password,
       "name": name,
       "photoUrl": " ",

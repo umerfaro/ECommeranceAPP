@@ -1,0 +1,114 @@
+{
+  "categories": [
+    {
+      "name": "Women Dress",
+      "subcategory": [
+        "Casual Dresses",
+        "Formal Dresses",
+        "Accessories",
+        "New Arrivals",
+        "Seasonal Collections",
+        "Sale Items"
+      ]
+    },
+    {
+      "name": "Men Clothing & Fashion",
+      "subcategory": [
+        "Casual Wear",
+        "Formal Wear",
+        "Accessories",
+        "New Arrivals",
+        "Seasonal Collections",
+        "Sale Items"
+      ]
+    },
+    {
+      "name": "Computer & Accessories",
+      "subcategory": [
+        "Laptops & Notebooks",
+        "Desktops & Monitors",
+        "Peripherals",
+        "Networking",
+        "Software",
+        "Gaming Accessories"
+      ]
+    },
+    {
+      "name": "Automobile",
+      "subcategory": [
+        "Cars",
+        "Motorcycles",
+        "Accessories",
+        "Spare Parts",
+        "Maintenance",
+        "Car Electronics"
+      ]
+    },
+    {
+      "name": "Kids & Toys",
+      "subcategory": [
+        "Toys & Games",
+        "Clothing & Accessories",
+        "School Supplies",
+        "Baby Gear",
+        "Outdoor Play",
+        "Educational Toys"
+      ]
+    },
+    {
+      "name": "Sports",
+      "subcategory": [
+        "Athletic Apparel",
+        "Footwear",
+        "Sports Equipment",
+        "Outdoor Recreation",
+        "Fitness Accessories",
+        "Team Sports Gear"
+      ]
+    },
+    {
+      "name": "Women Dress",
+      "subcategory": [
+        "Casual Dresses",
+        "Formal Dresses",
+        "Accessories",
+        "New Arrivals",
+        "Seasonal Collections",
+        "Sale Items"
+      ]
+    },
+    {
+      "name": "Jewelery",
+      "subcategory": [
+        "Necklaces",
+        "Earrings",
+        "Bracelets",
+        "Rings",
+        "Watches",
+        "Special Occasion Jewelry"
+      ]
+    },
+    {
+      "name": "Cell Phone",
+      "subcategory": [
+        "Smartphones",
+        "Phone Accessories",
+        "Cases & Covers",
+        "Chargers & Cables",
+        "Bluetooth Devices",
+        "Mobile Gadgets"
+      ]
+    },
+    {
+      "name": "Furniture",
+      "subcategory": [
+        "Living Room Furniture",
+        "Bedroom Furniture",
+        "Home Decor",
+        "Kitchen & Dining",
+        "Office Furniture",
+        "Outdoor Furniture"
+      ]
+    }
+  ]
+}
