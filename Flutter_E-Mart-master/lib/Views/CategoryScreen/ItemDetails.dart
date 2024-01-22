@@ -1,19 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
+import 'package:emart_app/Controller/ProductController/ProductController.dart';
 import 'package:emart_app/WidgetCommons/CustomButton.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:get/get.dart';
 
 class ItemDetails extends StatefulWidget {
   final String? title;
-  final String? image;
-  final String? price;
+  final dynamic  data;
   const ItemDetails(
-      {super.key, required this.title, this.image, required this.price});
+      {super.key, required this.title,   this.data});
 
   @override
   State<ItemDetails> createState() => _ItemDetailsState();
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+
+  var productController = Get.find<ProductController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,26 +43,29 @@ class _ItemDetailsState extends State<ItemDetails> {
                 child: SingleChildScrollView(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
+
                               children: [
                                 //SwiperSection
 
                                 VxSwiper.builder(
+                                  viewportFraction: 1.0,
                                   aspectRatio: 16 / 9,
                                   autoPlay: true,
-                                  autoPlayAnimationDuration: 1.seconds,
-                                  height: 300,
-                                  itemCount: sliderList.length,
+                                  height: 350,
+                                  itemCount: widget.data['p_images'].length,
                                   itemBuilder: (context, index) {
-                                    return Image.asset(
-                                      sliderList[index],
-                                      width: double.infinity,
-                                      fit: BoxFit.fill,
-                                    )
-                                        .box
-                                        .clip(Clip.antiAlias)
-                                        .margin(EdgeInsets.symmetric(horizontal: 2))
-                                        .make();
+                                    return
+
+                                      CachedNetworkImage(
+                                        imageUrl: widget.data["p_images"][index],
+                                        width: double.infinity,
+                                        fit: BoxFit.fill,
+                                      ).box
+                                          .clip(Clip.antiAlias)
+                                          .margin(const EdgeInsets.symmetric(horizontal: 2))
+                                          .make();
+
+
                                   },
                                 ),
                                 10.heightBox,
@@ -71,16 +80,17 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 Row(
                                   children: [
                                     VxRating(
+                                      value: double.parse(widget.data['p_rating'].toString()),
                                       onRatingUpdate: (value) {},
                                       normalColor: textfieldGrey,
                                       selectionColor: golden,
                                       size: 20,
-                                      stepInt: true,
                                       count: 5,
-                                      //isSelectable: false, // Set this to false to make the rating fixed
+                                      maxRating: 5,
+                                      isSelectable: false, // Set this to false to make the rating fixed
                                     ),
                                     5.widthBox,
-                                    "(4)"
+                                    widget.data['p_rating'].toString()
                                         .text
                                         .size(12)
                                         .fontFamily(semibold)
@@ -90,7 +100,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 ),
                                 10.heightBox,
                                 //Price
-                                widget.price!.text.color(redColor).fontFamily(bold).make(),
+                                "${widget.data['p_price']}".numCurrency.text.color(redColor).fontFamily(bold).make(),
                                 10.heightBox,
                                 Row(
                                   children: [
@@ -102,7 +112,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
                                             "Seller".text.fontFamily(bold).make(),
-                                            "In house Brands"
+                                            "${widget.data['p_seller']}"
                                                 .text
                                                 .white
                                                 .fontFamily(semibold)
@@ -127,93 +137,122 @@ class _ItemDetailsState extends State<ItemDetails> {
                                     .padding(const EdgeInsets.symmetric(horizontal: 16))
                                     .make(),
                                 10.heightBox,
-                                Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 100,
-                                          child:
-                                              "Color:".text.white.color(darkFontGrey).make(),
-                                        ),
-                                        Row(
-                                          children: List.generate(
-                                              3,
-                                              (index) => VxBox()
-                                                  .size(40, 40)
-                                                  .roundedFull
-                                                  .color(Vx.randomPrimaryColor)
-                                                  .margin(EdgeInsets.symmetric(horizontal: 6))
-                                                  .make()),
-                                        )
-                                      ],
-                                    ).box.padding(const EdgeInsets.all(8)).make(),
-                                    // quantity
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 100,
-                                          child: "Quantity:"
-                                              .text
-                                              .white
-                                              .color(darkFontGrey)
-                                              .make(),
-                                        ),
-                                        Row(
-                                          children: [
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.remove_circle_outline,
-                                                  color: darkFontGrey,
+                                Obx(
+                                  ()=> Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 100,
+                                            child:
+                                                "Color:".text.white.color(darkFontGrey).make(),
+                                          ),
+                                          Row(
+                                            children: List.generate(
+                                                widget.data['p_colors'].length,
+                                                (index) => Stack(
+                                                  alignment: Alignment.center,
+                                                  children: [
+                                                    VxBox()
+                                                        .size(40, 40)
+                                                        .roundedFull
+                                                        .color(Color(widget.data['p_colors'][index]).withOpacity(1.0))
+                                                        .margin(const EdgeInsets.symmetric(horizontal: 4))
+                                                        .make().onTap(() {
+                                                      productController.changeColorIndex(index);
+                                                    }),
+                                                     Visibility(
+                                                        visible: index==productController.colorIndex.value,
+                                                        child: const Icon(
+                                                      Icons.check,
+                                                      color: whiteColor,
+                                                    )),
+
+                                                  ],
                                                 )),
-                                            "0"
+                                          ),
+                                        ],
+                                      ).box.padding(const EdgeInsets.all(8)).make(),
+                                      // quantity
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 100,
+                                            child: "Quantity:"
                                                 .text
-                                                .size(16)
                                                 .white
                                                 .color(darkFontGrey)
-                                                .fontFamily(bold)
                                                 .make(),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.add_circle_outline,
-                                                  color: darkFontGrey,
-                                                )),
-                                          ],
-                                        )
-                                      ],
-                                    ).box.padding(const EdgeInsets.all(8)).make(),
-                                    //total price
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 100,
-                                          child:
-                                              "Total:".text.white.color(darkFontGrey).make(),
-                                        ),
-                                        Row(
-                                          children: [
-                                            "\$0.00"
-                                                .text
-                                                .size(16)
-                                                .white
-                                                .color(redColor)
-                                                .fontFamily(bold)
-                                                .make(),
-                                          ],
-                                        ),
+                                          ),
+                                          Obx(
+                                            ()=> Row(
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () {
+                                                      productController.decrement();
+                                                      productController.calculateTotalPrice(int.parse(widget.data['p_price']));
+                                                    },
+                                                    icon: const Icon(
+                                                      Icons.remove_circle_outline,
+                                                      color: darkFontGrey,
+                                                    )),
+                                                productController.quantity.value
+                                                    .text
+                                                    .size(16)
+                                                    .white
+                                                    .color(darkFontGrey)
+                                                    .fontFamily(bold)
+                                                    .make(),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      productController.increment(
+                                                         int.parse( widget.data['p_quantity'])
+                                                      );
+                                                      productController.calculateTotalPrice(int.parse(widget.data['p_price']));
 
-                                        //description
-                                      ],
-                                    ).box.padding(const EdgeInsets.all(8)).make(),
-                                  ],
-                                ).box.white.shadowSm.make(),
+                                                    },
+                                                    icon: const Icon(
+                                                      Icons.add_circle_outline,
+                                                      color: darkFontGrey,
+                                                    )),
+                                                "(${widget.data['p_quantity']} available)".text.color(textfieldGrey).make(),
+
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ).box.padding(const EdgeInsets.all(8)).make(),
+                                      //total price
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 100,
+                                            child:
+                                                "Total:".text.white.color(darkFontGrey).make(),
+                                          ),
+                                          Row(
+                                            children: [
+                                              "${productController.totalPrice.value}".numCurrency
+                                                  .text
+                                                  .size(16)
+                                                  .white
+                                                  .color(redColor)
+                                                  .fontFamily(bold)
+                                                  .make(),
+                                            ],
+                                          ),
+
+                                          //description
+                                        ],
+                                      ).box.padding(const EdgeInsets.all(8)).make(),
+                                    ],
+                                  ).box.white.shadowSm.make(),
+                                ),
                                 10.heightBox,
                                 "Description".text.white.color(darkFontGrey).fontFamily(bold).make(),
                                 10.heightBox,
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget fermentum aliquam, leo nisl vestibulum nisl, eget aliquam nisl nisl eget augue. Donec euismod, nisl eget fermentum aliquam, leo nisl vestibulum nisl, eget aliquam nisl nisl eget augue."
-                                    .text
+
+                                "${widget.data['p_description']}" .text
                                     .white
                                     .color(darkFontGrey)
                                     .make(),

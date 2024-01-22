@@ -9,4 +9,11 @@ class FireStoreServices {
 
   }
 
+
+  //get products data
+  static getProducts(category){
+    return firestore.collection(productCollections).where('p_category',isEqualTo: category).snapshots();
+
+  }
+
 }

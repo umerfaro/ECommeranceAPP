@@ -10,6 +10,10 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController{
 
+  var quantity=0.obs;
+var colorIndex=0.obs;
+var totalPrice=0.obs;
+
   var subcat=[];
 
   getSubCat(title) async {
@@ -28,6 +32,28 @@ class ProductController extends GetxController{
 
 
 
+
+  }
+
+  calculateTotalPrice(price)
+  {
+    totalPrice.value=price * quantity.value;
+  }
+
+
+  changeColorIndex(index){
+    colorIndex.value=index;
+  }
+
+  increment(totalQuantity){
+    if(quantity.value<totalQuantity) {
+      quantity.value++;
+    }
+  }
+  decrement(){
+    if(quantity.value>0) {
+      quantity.value--;
+    }
   }
 
 
