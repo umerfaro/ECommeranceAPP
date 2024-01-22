@@ -5,17 +5,14 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/ProductController/ProductController.dart';
-class CategoryScreen extends StatefulWidget {
+class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
 
-  @override
-  State<CategoryScreen> createState() => _HomeScreenState();
-}
 
-class _HomeScreenState extends State<CategoryScreen> {
-  var categoryController = Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
+    var categoryController = Get.put(ProductController());
     return bgWidget(
         Scaffold(
           appBar: AppBar(

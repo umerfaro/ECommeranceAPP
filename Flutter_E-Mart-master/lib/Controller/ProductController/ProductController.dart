@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:emart_app/Services/Category_Model.dart';
-import 'package:emart_app/Services/Category_Model.dart';
+import 'package:emart_app/consts/consts.dart';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import '../../Utils/Utils.dart';
 
 
 
@@ -14,10 +16,13 @@ class ProductController extends GetxController{
 var colorIndex=0.obs;
 var totalPrice=0.obs;
 
-  var subcat=[];
+var loading=false.obs;
+  void setLoading2(bool value) => loading.value = value;
+
+  var subCat=[];
 
   getSubCat(title) async {
-   subcat.clear();
+   subCat.clear();
 
 
    var data =await rootBundle.loadString("lib/Services/category_model.json");
@@ -27,7 +32,7 @@ var totalPrice=0.obs;
     var s= decoded.categories!.where((element) => element.name==title).toList();
 
     for( var e in s[0].subcategory!){
-      subcat.add(e);
+      subCat.add(e);
     }
 
 
@@ -55,6 +60,42 @@ var totalPrice=0.obs;
       quantity.value--;
     }
   }
+
+  addToCart({
+    required String title,
+    required String img,
+    required String sellerName,
+    required int qty,
+    required double totalPrice, required color,
+  }) async {
+    setLoading2(true);
+    if (currentUser != null) {
+      await firestore.collection(cartCollections).doc().set({
+        "title": title,
+        "img": img,
+        "sellerName": sellerName,
+        "qty": qty,
+        "totalPrice": totalPrice,
+        "added_by": currentUser!.uid,
+      }).then((value) {
+        Utils.toastMessage("Added to cart");
+        setLoading2(false);
+        resetValues();
+      }).catchError((error) {
+        Utils.toastMessage(error.toString());
+        setLoading2(false);
+      });
+    } else {
+      Utils.toastMessage("User not logged in");
+      setLoading2(false);
+    }
+  }
+
+resetValues() {
+  quantity.value = 0;
+  colorIndex.value = 0;
+  totalPrice.value = 0;
+}
 
 
 }

@@ -12,6 +12,7 @@ import 'package:emart_app/WidgetCommons/appLogo_widget.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
+import '../../WidgetCommons/exist_dialog.dart';
 import 'SignUpScreen.dart';
 import 'ForgotPasswordScreen.dart';
 
@@ -48,19 +49,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: true,
+      canPop: false,
       onPopInvoked: (didPop) {
         // Handle back button press
         if (didPop) {
-          SystemNavigator.pop();
+          //SystemNavigator.pop();
+                  return ;
 
-          // Pop was successful
-          // Perform any action you want when the back button is pres
-
-        } else {
-          // Pop was not successful
-          // Maybe show a snackbar or perform another action
         }
+
+        showDialog(
+            barrierDismissible: false,
+            context: context, builder: (context)=> exitDialogWidget(context));
       },
       child: bgWidget(
         Scaffold(

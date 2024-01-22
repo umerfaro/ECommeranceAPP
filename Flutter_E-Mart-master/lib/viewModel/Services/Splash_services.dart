@@ -17,7 +17,6 @@ class SplashServices {
 
     try {
       final user = auth.currentUser;
-      print(user.toString());
 
       if (user != null) {
 

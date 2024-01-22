@@ -4,6 +4,7 @@ import 'package:emart_app/Views/AccountScreen/AccountScreen.dart';
 import 'package:emart_app/Views/CartScreen/CartScreen.dart';
 import 'package:emart_app/Views/CategoryScreen/CategoryScreen.dart';
 import 'package:emart_app/Views/HomeScreen/HomeScreen.dart';
+import 'package:emart_app/WidgetCommons/exist_dialog.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -36,21 +37,20 @@ class _HomeState extends State<Home> {
 
     return  Scaffold(
       body: PopScope(
-        canPop: true  ,
+        canPop: false  ,
 
         onPopInvoked: (didPop) {
           // Handle back button press
-          if (didPop)
-          {
+          // Handle back button press
+          if (didPop) {
+            //SystemNavigator.pop();
+            return ;
 
-            SystemNavigator.pop();
-
-            // Pop was successful
-            // Perform any action you want when the back button is pres
-          } else {
-            // Pop was not successful
-            // Maybe show a snackbar or perform another action
           }
+
+          showDialog(
+              barrierDismissible: false,
+              context: context, builder: (context)=> exitDialogWidget(context));
         },
 
         child: Column(

@@ -13,6 +13,7 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
 import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 
@@ -153,7 +154,7 @@ class _HomeScreenState extends State<AccountScreen> {
                           await Get.put(AuthController()).signOutMethod();
 
                           Utils.toastMessage(logOut);
-
+                          await GoogleSignIn().signOut();
                           SessionController().logout();
 
                           Get.offAll(()=> const LoginScreen());

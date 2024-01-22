@@ -52,8 +52,8 @@ class _CategoriesDetailsState extends State<CategoriesDetails> {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: List.generate(
-                                categoryController.subcat.length,
-                                    (index) => categoryController.subcat[index].toString()
+                                categoryController.subCat.length,
+                                    (index) => categoryController.subCat[index].toString()
                                     .text
                                     .size(12)
                                     .fontFamily(semibold)
