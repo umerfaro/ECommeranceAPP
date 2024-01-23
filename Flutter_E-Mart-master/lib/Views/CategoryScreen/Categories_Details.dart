@@ -114,7 +114,10 @@ class _CategoriesDetailsState extends State<CategoriesDetails> {
                                     .padding(const EdgeInsets.all(8))
                                     .roundedSM.outerShadowSm
                                     .make().onTap(() {
-                                  Get.to(() => ItemDetails(title:  "${data[index]['p_name']}", data:  data[index] ,));
+                                  categoryController.checkIfProductIsFavorite(data[index]);
+                                  Get.to(() => ItemDetails(
+                                    title:  "${data[index]['p_name']}", data:  data[index] ,)
+                                  );
                                 }),
                               );
                             }),

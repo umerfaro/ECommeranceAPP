@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:emart_app/Controller/ProductController/ProductController.dart';
+import 'package:emart_app/Views/chatScreenUser/chat_Screen.dart';
 import 'package:emart_app/WidgetCommons/CustomButton.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -8,20 +9,16 @@ import 'package:get/get.dart';
 
 import '../../Utils/Utils.dart';
 
-class ItemDetails extends StatefulWidget {
+class ItemDetails extends StatelessWidget {
   final String? title;
   final dynamic data;
   const ItemDetails({super.key, required this.title, this.data});
 
-  @override
-  State<ItemDetails> createState() => _ItemDetailsState();
-}
 
-class _ItemDetailsState extends State<ItemDetails> {
-  var productController = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {
+    var productController = Get.find<ProductController>();
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {
@@ -43,14 +40,31 @@ class _ItemDetailsState extends State<ItemDetails> {
                 productController.resetValues();
               },
               icon: const Icon(Icons.arrow_back_ios)),
-          title: widget.title!.text.white
+          title: title!.text.white
               .fontFamily(semibold)
               .color(darkFontGrey)
               .make(),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            Obx(
+              ()=> IconButton(
+                  onPressed: () {
+                    if(productController.isFavorite.value) {
+                     productController.removeToWishList(data.id);
+                     productController.isFavorite.value=false;
+                    }
+                    else
+                      {
+                        productController.addToWishList(data.id);
+
+                      }
+
+                  }, icon:  Icon(
+                Icons.favorite_outlined,
+                color: productController.isFavorite.value?redColor:darkFontGrey,
+
+              )),
+            ),
           ],
         ),
         body: Column(
@@ -69,10 +83,10 @@ class _ItemDetailsState extends State<ItemDetails> {
                       aspectRatio: 16 / 9,
                       autoPlay: true,
                       height: 350,
-                      itemCount: widget.data['p_images'].length,
+                      itemCount: data['p_images'].length,
                       itemBuilder: (context, index) {
                         return CachedNetworkImage(
-                          imageUrl: widget.data["p_images"][index],
+                          imageUrl: data["p_images"][index],
                           width: double.infinity,
                           fit: BoxFit.fill,
                         )
@@ -84,7 +98,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                     ),
                     10.heightBox,
                     //Title
-                    widget.title!.text
+                    title!.text
                         .size(16)
                         .fontFamily(semibold)
                         .color(darkFontGrey)
@@ -95,7 +109,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                       children: [
                         VxRating(
                           value:
-                              double.parse(widget.data['p_rating'].toString()),
+                              double.parse(data['p_rating'].toString()),
                           onRatingUpdate: (value) {},
                           normalColor: textfieldGrey,
                           selectionColor: golden,
@@ -106,7 +120,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                               false, // Set this to false to make the rating fixed
                         ),
                         5.widthBox,
-                        widget.data['p_rating']
+                        data['p_rating']
                             .toString()
                             .text
                             .size(12)
@@ -117,7 +131,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                     ),
                     10.heightBox,
                     //Price
-                    "${widget.data['p_price']}"
+                    "${data['p_price']}"
                         .numCurrency
                         .text
                         .color(redColor)
@@ -134,7 +148,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 "Seller".text.fontFamily(bold).make(),
-                                "${widget.data['p_seller']}"
+                                "${data['p_seller']}"
                                     .text
                                     .white
                                     .fontFamily(semibold)
@@ -144,12 +158,23 @@ class _ItemDetailsState extends State<ItemDetails> {
                             ),
                           ),
                         ),
-                        const CircleAvatar(
-                          backgroundColor: whiteColor,
-                          child: Icon(
-                            Icons.message_rounded,
-                            color: darkFontGrey,
-                          ),
+                        Hero(
+                          tag: 'chat_button', // Unique tag for chat_button
+                          child: const CircleAvatar(
+
+                            backgroundColor: whiteColor,
+                            child: Icon(
+                              Icons.message_rounded,
+                              color: darkFontGrey,
+                            ),
+                          ).onTap(() {
+                            Get.to( ()=> const ChatScreen(),
+                            arguments: [
+                              data['p_seller'],
+                              data['vendor_id'],
+                            ]
+                            );
+                          }),
                         )
                       ],
                     )
@@ -174,7 +199,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                               ),
                               Row(
                                 children: List.generate(
-                                    widget.data['p_colors'].length,
+                                    data['p_colors'].length,
                                     (index) => Stack(
                                           alignment: Alignment.center,
                                           children: [
@@ -182,7 +207,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                                 .size(40, 40)
                                                 .roundedFull
                                                 .color(Color(
-                                                        widget.data['p_colors']
+                                                        data['p_colors']
                                                             [index])
                                                     .withOpacity(1.0))
                                                 .margin(
@@ -225,7 +250,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                           productController.decrement();
                                           productController.calculateTotalPrice(
                                               int.parse(
-                                                  widget.data['p_price']));
+                                                  data['p_price']));
                                         },
                                         icon: const Icon(
                                           Icons.remove_circle_outline,
@@ -240,16 +265,16 @@ class _ItemDetailsState extends State<ItemDetails> {
                                     IconButton(
                                         onPressed: () {
                                           productController.increment(int.parse(
-                                              widget.data['p_quantity']));
+                                              data['p_quantity']));
                                           productController.calculateTotalPrice(
                                               int.parse(
-                                                  widget.data['p_price']));
+                                                  data['p_price']));
                                         },
                                         icon: const Icon(
                                           Icons.add_circle_outline,
                                           color: darkFontGrey,
                                         )),
-                                    "(${widget.data['p_quantity']} available)"
+                                    "(${data['p_quantity']} available)"
                                         .text
                                         .color(textfieldGrey)
                                         .make(),
@@ -297,7 +322,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         .make(),
                     10.heightBox,
 
-                    "${widget.data['p_description']}"
+                    "${data['p_description']}"
                         .text
                         .white
                         .color(darkFontGrey)
@@ -390,15 +415,15 @@ class _ItemDetailsState extends State<ItemDetails> {
                           onPress: () {
                             if (productController.quantity.value > 0) {
                               productController.addToCart(
-                                color: widget.data['p_colors']
+                                color: data['p_colors']
                                     [productController.colorIndex.value],
                                 qty: productController.quantity.value,
-                                img: widget.data['p_images'][0],
-                                title: widget.data['p_name'],
+                                img: data['p_images'][0],
+                                title: data['p_name'],
                                 totalPrice: double.parse(productController
                                     .totalPrice.value
                                     .toString()),
-                                sellerName: widget.data['p_seller'],
+                                sellerName: data['p_seller'],
                               );
                             } else {
                               Utils.toastMessage("Please select quantity");

@@ -26,4 +26,12 @@ static getCart(uid)
 static deleteCart(id) {
   return firestore.collection(cartCollections).doc(id).delete();
 }
+
+//get all chat messages
+static getChatMessages(docId)
+{
+  return firestore.collection(chatCollections).doc(docId).collection(messageCollections).orderBy('created_on',descending: false).snapshots();
+}
+
+
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/Services/Category_Model.dart';
 import 'package:emart_app/consts/consts.dart';
 
@@ -15,6 +16,7 @@ class ProductController extends GetxController{
   var quantity=0.obs;
 var colorIndex=0.obs;
 var totalPrice=0.obs;
+var isFavorite=false.obs;
 
 var loading=false.obs;
   void setLoading2(bool value) => loading.value = value;
@@ -96,6 +98,37 @@ resetValues() {
   colorIndex.value = 0;
   totalPrice.value = 0;
 }
+
+
+addToWishList(docID) async{
+
+    await firestore.collection(productCollections).doc(docID).set({
+   'p_wishList':FieldValue.arrayUnion([currentUser!.uid])
+    },SetOptions(merge: true));
+
+    isFavorite.value=true;
+    Utils.toastMessage("Added to wishList");
+}
+
+  removeToWishList(docID) async{
+
+    await firestore.collection(productCollections).doc(docID).set({
+      'p_wishList':FieldValue.arrayRemove([currentUser!.uid])
+    },SetOptions(merge: true));
+
+    isFavorite.value=false;
+    Utils.toastMessage("Removed from wishList");
+
+  }
+
+  checkIfProductIsFavorite(data) async
+  {
+    if(data()['p_wishList'].contains(currentUser!.uid)){
+      isFavorite.value=true;
+    }else{
+      isFavorite.value=false;
+    }
+  }
 
 
 }
