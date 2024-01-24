@@ -1,5 +1,6 @@
 
 import 'package:emart_app/consts/FireBase_const.dart';
+import 'package:emart_app/consts/consts.dart';
 
 class FireStoreServices {
 
@@ -33,5 +34,49 @@ static getChatMessages(docId)
   return firestore.collection(chatCollections).doc(docId).collection(messageCollections).orderBy('created_on',descending: false).snapshots();
 }
 
+//get all orders
+static getOrders(uid) {
+  return firestore.collection(orderCollections).where(
+      'order_by', isEqualTo: uid).snapshots();
+}
+
+//get wish list
+static getWishList(uid) {
+  return firestore.collection(productCollections).where(
+      'p_wishList', arrayContains: uid).snapshots();
+}
+
+//get all messages
+static getAllMessages(uid) {
+  return firestore.collection(chatCollections).where("fromId",isEqualTo: uid).snapshots();
+}
+
+//get counts
+  //get all counts details at ones in a list
+  //filters
+static getCounts(uid) async {
+var res= await Future.wait([
+  firestore.collection(cartCollections).where('added_by',isEqualTo: uid).get().then((value) {
+    return value.docs.length;
+  }),
+    firestore.collection(productCollections).where(
+  'p_wishList', arrayContains: uid).get().then((value) {
+    return value.docs.length;
+  }),
+  firestore.collection(orderCollections).where('order_by',isEqualTo: uid).get().then((value) {
+    return value.docs.length;
+  }),
+
+]);
+return res;
+
+  }
+
+
+
+  //get all prodocts
+static getAllProducts() {
+  return firestore.collection(productCollections).snapshots();
+}
 
 }

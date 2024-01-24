@@ -415,6 +415,7 @@ class ItemDetails extends StatelessWidget {
                           onPress: () {
                             if (productController.quantity.value > 0) {
                               productController.addToCart(
+                                vender_id: data['vendor_id'],
                                 color: data['p_colors']
                                     [productController.colorIndex.value],
                                 qty: productController.quantity.value,
@@ -433,17 +434,6 @@ class ItemDetails extends StatelessWidget {
                           title: "Add to Cart",
                           textColor: whiteColor,
                           color: redColor,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Hero(
-                        tag: 'BuyNow_button', // Unique tag for BuyNow_button
-                        child: customButtonWidget(
-                          onPress: () {},
-                          title: "Buy Now",
-                          textColor: whiteColor,
-                          color: darkFontGrey,
                         ),
                       ),
                     ),

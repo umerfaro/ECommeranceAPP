@@ -8,9 +8,13 @@ Widget customButtonWidget({
   bool loading = false,
 }) {
   return ElevatedButton(
+
     style: ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(3),
+      ),
       backgroundColor: color,
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(15),
     ),
     onPressed: loading ? null : onPress,
     child:loading ? const RepaintBoundary(

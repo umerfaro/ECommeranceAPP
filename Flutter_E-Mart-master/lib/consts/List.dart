@@ -53,8 +53,16 @@ const listOfDetails=[
 ];
 
 const profileList= [
- wishList,orders,coupon,messages
+ wishList,orders,messages
 ];
 const profileListIcon= [
-  icHeart,icOrders,icCoupon,icMessages
+  icHeart,icOrders,icMessages
+];
+
+const paymentImageList= [
+  imgCod,imgPaypal,imgStripe
+];
+
+const paymentList= [
+  cod,paypal,stripe
 ];

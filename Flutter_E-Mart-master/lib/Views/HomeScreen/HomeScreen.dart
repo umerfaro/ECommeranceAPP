@@ -1,7 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emart_app/Views/CategoryScreen/ItemDetails.dart';
 import 'package:emart_app/Views/HomeScreen/Components/Featursbuttons.dart';
 import 'package:emart_app/WidgetCommons/HomeButtons.dart';
+import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../Controller/ProductController/ProductController.dart';
 import '../../consts/List.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var categoryController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -150,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                    // Content on top of the background image
                    Container(
-                     padding: EdgeInsets.all(12),
+                     padding: const EdgeInsets.all(12),
                      width: double.infinity,
                      child: Column(
                        crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,43 +232,67 @@ class _HomeScreenState extends State<HomeScreen> {
                /// All Products sectios
                20.heightBox,
                //to show 2 item per grid
-               GridView.builder(
-                 physics: const NeverScrollableScrollPhysics(),
-                 itemCount: 6,
-                   shrinkWrap: true,
-                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                       crossAxisCount: 2,mainAxisSpacing: 8,
-                     crossAxisSpacing: 8,
-                     mainAxisExtent: 300
-                   ), itemBuilder: (context,index){
-                 return Column(
- crossAxisAlignment: CrossAxisAlignment.start,
-                   children: [
-                     Image.asset(
-                       featuredProductList[index],
-                       width: 200,
-                       height: 200,
-                     ),
-                    const Spacer(),
-                     featuredProductTitle[index]
-                         .text
-                         .white
-                         .fontFamily(semibold)
-                         .color(darkFontGrey)
-                         .make(),
-                     10.heightBox,
-                     featuredProductPrice[index]
-                         .text
-                         .color(redColor)
-                         .fontFamily(bold)
-                         .make(),
-                   ],
-                 ).box.white
-                     .margin(const EdgeInsets.symmetric(horizontal: 4))
-                     .padding(const EdgeInsets.all(8))
-                     .roundedSM
-                     .make();
-               })
+              StreamBuilder(
+                  stream: FireStoreServices.getAllProducts(), builder:(BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
+              {
+                    if(!snapshot.hasData)
+                      {
+                        return Center(child: loadingIndicator());
+                      }
+                    else if(snapshot.data!.docs.isEmpty)
+                      {
+                        return Center(child: "No Products Found".text.size(20).color(darkFontGrey).fontFamily(semibold).make(),);
+                      }
+                    else
+                      {
+                        var data = snapshot.data!.docs;
+                        return  GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: data.length,
+                            shrinkWrap: true,
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,mainAxisSpacing: 8,
+                                crossAxisSpacing: 8,
+                                mainAxisExtent: 300
+                            ), itemBuilder: (context,index){
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.network(
+                                data[index]['p_images'][0],
+                                width: 200,
+                                height: 200,
+                              ),
+                              const Spacer(),
+                              data[index]['p_name'].toString()
+                                  .text
+                                  .white
+                                  .fontFamily(semibold)
+                                  .color(darkFontGrey)
+                                  .make(),
+                              10.heightBox,
+                              "${data[index]['p_price']}".numCurrency
+                                  .text
+                                  .color(redColor)
+                                  .fontFamily(bold)
+                                  .make(),
+                            ],
+                          ).box.white
+                              .margin(const EdgeInsets.symmetric(horizontal: 4))
+                              .padding(const EdgeInsets.all(8))
+                              .roundedSM
+                              .make().onTap(() {
+                            categoryController.checkIfProductIsFavorite(data[index]);
+                                Get.to(()=> ItemDetails(
+                                    title:  data[index]['p_name'],
+                                  data: data[index],
+                                ));
+
+                          });
+                        });
+                      }
+              }
+              )
          
              ],
            ),

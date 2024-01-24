@@ -5,8 +5,12 @@ import 'package:emart_app/Controller/auth_Controller.dart';
 import 'package:emart_app/Utils/Utils.dart';
 import 'package:emart_app/Views/AccountScreen/Conponents/detailsPorfile.dart';
 import 'package:emart_app/Views/AccountScreen/EditProfileScreen.dart';
+import 'package:emart_app/Views/OrderScreen/OrderScreen.dart';
+import 'package:emart_app/Views/WishList/WishlistScreen.dart';
 
 import 'package:emart_app/Views/authScreen/Login_screen.dart';
+import 'package:emart_app/Views/chatScreenUser/messageScreen.dart';
+import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/List.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -93,33 +97,43 @@ class _HomeScreenState extends State<AccountScreen> {
                             profileController.oldPassword=data['password'].toString();
 
                             Get.to(()=>  EditProfileScreen(data: data, ));
-
-
-
-
-                            //edit profile button on tap
                           }),
                         ),
 
                       ),
                       5.heightBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                        children: [
-                          detailsProfile(width: context.screenWidth/3.4,
+                      FutureBuilder(
+                          future: FireStoreServices.getCounts(currentUser!.uid),
+                          builder: (BuildContext context, AsyncSnapshot snapshot){
 
-                              count:data['cart_count'].toString(),
-                              title: incart),
-                          detailsProfile(width: context.screenWidth/3.4,
-                              count: data['wishList'].toString()
-                              ,title: wishlist),
-                          detailsProfile(width: context.screenWidth/3.4,
-                              count: data['orderCount'].toString(),
-                              title: myOrders),
+                            if(!snapshot.hasData)
+                              {
+                                return Center(child: loadingIndicator());
+                              }
+                            else
+                              {
+                                var countdata = snapshot.data;
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                        ],
-                      ),
+                                  children: [
+                                    detailsProfile(width: context.screenWidth/3.4,
+
+                                        count:countdata[0].toString(),
+                                        title: incart),
+                                    detailsProfile(width: context.screenWidth/3.4,
+                                        count: countdata[1].toString()
+                                        ,title: wishlist),
+                                    detailsProfile(width: context.screenWidth/3.4,
+                                        count: countdata[2].toString(),
+                                        title: myOrders),
+
+                                  ],
+                                );
+                              }
+                      }),
+
                       10.heightBox,
 
                       ListView.separated(
@@ -131,15 +145,32 @@ class _HomeScreenState extends State<AccountScreen> {
                           },
                           itemCount: profileList.length,
                           itemBuilder: (contex,index){
-                            return ListTile(
-                              leading: Image.asset(
-                                profileListIcon[index],
-                                width: 22,
+                            return Hero(
+                              tag: 'category_image$index',
+                              child: ListTile(
+                                onTap: (){
+                                  if(index==0)
+                                    {
+                                      Get.to(()=> const WishListScreen());
+                                    }
+                                  else if(index==1)
+                                    {
+                                      Get.to(()=> const OrdersScreen());
+                                    }
+                                  else if(index==2)
+                                  {
+                                    Get.to(()=> const MessageScreen());
+                                  }
+                                },
+                                leading: Image.asset(
+                                  profileListIcon[index],
+                                  width: 22,
 
+                                ),
+                                title: profileList[index].text.size(14).fontFamily(semibold).color(darkFontGrey).make(),
                               ),
-                              title: profileList[index].text.size(14).fontFamily(semibold).color(darkFontGrey).make(),
                             );
-                          }).box.white.rounded.margin(EdgeInsets.all(12)).padding(EdgeInsets.symmetric(horizontal:16 )).shadowSm.make().box.color(redColor).make(),
+                          }).box.white.rounded.margin(const EdgeInsets.all(12)).padding(const EdgeInsets.symmetric(horizontal:16 )).shadowSm.make().box.color(redColor).make(),
                       20.heightBox,
 
                       OutlinedButton(
@@ -147,10 +178,9 @@ class _HomeScreenState extends State<AccountScreen> {
                           side: const BorderSide(
                               color: lightGrey
                           ),
-                          backgroundColor: redColor, // Set the background color here
+                          backgroundColor: redColor,
                         ),
                         onPressed: () async {
-                          // Your onPressed logic here
                           await Get.put(AuthController()).signOutMethod();
 
                           Utils.toastMessage(logOut);

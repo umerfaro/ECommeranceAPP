@@ -69,6 +69,7 @@ var loading=false.obs;
     required String sellerName,
     required int qty,
     required double totalPrice, required color,
+    required vender_id
   }) async {
     setLoading2(true);
     if (currentUser != null) {
@@ -79,6 +80,8 @@ var loading=false.obs;
         "qty": qty,
         "totalPrice": totalPrice,
         "added_by": currentUser!.uid,
+        "color": color,
+        "vendor_id":vender_id,
       }).then((value) {
         Utils.toastMessage("Added to cart");
         setLoading2(false);
@@ -123,7 +126,7 @@ addToWishList(docID) async{
 
   checkIfProductIsFavorite(data) async
   {
-    if(data()['p_wishList'].contains(currentUser!.uid)){
+    if(data['p_wishList'].contains(currentUser!.uid)){
       isFavorite.value=true;
     }else{
       isFavorite.value=false;

@@ -5,16 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560d44e0-d1ca-4689-8a61-b1244a8f3af8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/ChaTController.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/chatScreenUser/Compoents/SenderBubble.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/chatScreenUser/chat_Screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/chatScreenUser/messageScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/Payment_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/shippin_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/OrderScreen/Components/OrderPlaced.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/OrderScreen/Components/orderStatus.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/OrderScreen/OrderScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/OrderScreen/orderDetails.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/WishList/WishlistScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/HomeContoller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/HomeContoller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/ProductController/ProductController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/ProductController/ProductController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/cartController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Controller/cartController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/AccountScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/AccountScreen/AccountScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/CartScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CartScreen/CartScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/Categories_Details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/Categories_Details.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/CategoryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/CategoryScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/ItemDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/CategoryScreen/ItemDetails.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/HomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/HomeScreen/HomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/chatScreenUser/messageScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/Views/chatScreenUser/messageScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/WidgetCommons/CustomButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/WidgetCommons/CustomButton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/FireBase_const.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/FireBase_const.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/List.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/consts/strings.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/viewModel/Services/FireStoreServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Flutter_E-Mart-master/lib/viewModel/Services/FireStoreServices.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

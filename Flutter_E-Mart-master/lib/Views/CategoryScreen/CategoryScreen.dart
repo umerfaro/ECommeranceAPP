@@ -12,7 +12,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var categoryController = Get.put(ProductController());
+    var categoryController = Get.find<ProductController>();
     return bgWidget(
         Scaffold(
           appBar: AppBar(

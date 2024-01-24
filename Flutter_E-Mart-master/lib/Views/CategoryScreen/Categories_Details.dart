@@ -4,7 +4,7 @@ import 'package:emart_app/Controller/ProductController/ProductController.dart';
 import 'package:emart_app/Views/CategoryScreen/ItemDetails.dart';
 import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
-import 'package:emart_app/consts/List.dart';
+
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
 import 'package:get/get.dart';
@@ -113,8 +113,10 @@ class _CategoriesDetailsState extends State<CategoriesDetails> {
                                     .margin(const EdgeInsets.symmetric(horizontal: 4))
                                     .padding(const EdgeInsets.all(8))
                                     .roundedSM.outerShadowSm
-                                    .make().onTap(() {
+                                    .make().onTap(()
+                                {
                                   categoryController.checkIfProductIsFavorite(data[index]);
+
                                   Get.to(() => ItemDetails(
                                     title:  "${data[index]['p_name']}", data:  data[index] ,)
                                   );
