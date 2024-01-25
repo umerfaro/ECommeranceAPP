@@ -8,8 +8,10 @@ import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../Controller/HomeContoller.dart';
 import '../../Controller/ProductController/ProductController.dart';
 import '../../consts/List.dart';
+import 'SearchScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var categoryController = Get.put(ProductController());
+  var homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,14 +36,24 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 60,
           color: lightGrey,
           child: TextFormField(
-            decoration: const InputDecoration(
+            controller: homeController.searchController,
+            decoration:  InputDecoration(
+
               hintText: search,
               border: InputBorder.none,
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 fontFamily: semibold,
                 color: textfieldGrey,
               ),
-              suffixIcon: Icon(Icons.search),
+              suffixIcon: const Icon(Icons.search).onTap(() {
+                if(homeController.searchController.text.isNotEmptyAndNotNull)
+                {
+                  Get.to(()=> SearchScreen(
+
+                    search: homeController.searchController.text,
+                  ));
+                }
+              }),
               filled: true,
               fillColor: whiteColor,
             ),
@@ -136,9 +149,9 @@ class _HomeScreenState extends State<HomeScreen> {
                  child: Row(
                    children:List.generate(3, (index) => Column(
                      children: [
-                       featuredButton(images: featuredListUpper[index],title: featuredListUpperTitle[index]),
+                       featuredButton(images: featuredListUpper[index],title: featuredListUpperTitle[index],categoryController: categoryController),
                         10.heightBox,
-                       featuredButton(images: featuredListLower[index],title: featuredListLowerTitle[index]),
+                       featuredButton(images: featuredListLower[index],title: featuredListLowerTitle[index],categoryController: categoryController),
 
                      ],
                    )).toList() ,
@@ -167,41 +180,68 @@ class _HomeScreenState extends State<HomeScreen> {
                          10.heightBox,
                          SingleChildScrollView(
                            scrollDirection: Axis.horizontal,
-                           child: Row(
-                             children: List.generate(
-                               6,
-                                   (index) => Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                   Image.asset(
-                                     featuredProductList[index],
-                                     width: 100,
-                                     height: 100,
-                                   ),
-                                   10.heightBox,
-                                   featuredProductTitle[index]
-                                       .text
-                                       .white
-                                       .fontFamily(semibold)
-                                       .color(darkFontGrey)
-                                       .make(),
-                                   10.heightBox,
-                                   featuredProductPrice[index]
-                                       .text
-                                       .color(redColor)
-                                       .fontFamily(bold)
-                                       .make(),
-                                 ],
-                               ).box.white
-                                   .margin(const EdgeInsets.symmetric(horizontal: 4))
-                                   .padding(const EdgeInsets.all(8))
-                                   .roundedSM
-                                   .make(),
-                             ),
+                           child: StreamBuilder(
+                              stream: FireStoreServices.getFeaturedProducts(),
+                             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                               if(!snapshot.hasData)
+                                 {
+                                   return Center(child: loadingIndicator());
+                                 }
+                               else if(snapshot.data!.docs.isEmpty)
+                                 {
+                                   return Center(child: "No Featured Products Today".text.white.fontFamily(semibold).make(),);
+                                 }
+                               else
+                                 {
+                                   var data = snapshot.data!.docs;
+                                   return  Row(
+                                     children: List.generate(
+                                       data.length,
+                                           (index) => Column(
+                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                         children: [
+                                           Image.network(
+                                             data[index]['p_images'][0],
+                                             width: 100,
+                                             height: 100,
+                                           ),
+                                           10.heightBox,
+                                           data[index]['p_name'].toString()
+                                               .text
+                                               .white
+                                               .fontFamily(semibold)
+                                               .color(darkFontGrey)
+                                               .make(),
+                                           10.heightBox,
+                                           "${data[index]['p_price']}".numCurrency
+                                               .text
+                                               .color(redColor)
+                                               .fontFamily(bold)
+                                               .make(),
+                                         ],
+                                       ).box.white
+                                           .margin(const EdgeInsets.symmetric(horizontal: 4))
+                                           .padding(const EdgeInsets.all(8))
+                                           .roundedSM
+                                           .make().onTap(() {
+
+                                             categoryController.checkIfProductIsFavorite(data[index]);
+                                             Get.to(()=> ItemDetails(
+                                                 title:  data[index]['p_name'],
+                                                 data: data[index],
+                                             ));
+
+
+                                           }),
+                                     ),
+                                   );
+                                 }
+                             }
+
                            ),
                          ),
                        ],
-                     ),
+                     ).onTap(() { }),
                    ),
                  ],
                )
@@ -281,7 +321,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               .margin(const EdgeInsets.symmetric(horizontal: 4))
                               .padding(const EdgeInsets.all(8))
                               .roundedSM
-                              .make().onTap(() {
+                              .make().onTap(()
+                          {
                             categoryController.checkIfProductIsFavorite(data[index]);
                                 Get.to(()=> ItemDetails(
                                     title:  data[index]['p_name'],

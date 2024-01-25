@@ -19,6 +19,8 @@ void onInit() {
   }
 
 
+  var searchController = TextEditingController();
+
   var username = "";
 
   getUsername() async {

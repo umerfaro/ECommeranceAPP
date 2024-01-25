@@ -18,58 +18,89 @@ class CategoriesDetails extends StatefulWidget {
 }
 
 class _CategoriesDetailsState extends State<CategoriesDetails> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+    switchCategory(widget.title);
+  }
+
+  switchCategory(title)
+  {
+    if(categoryController.subCat.contains(title))
+      {
+        productMethod= FireStoreServices.getSubCategoires(title);
+
+      }else
+        {
+          productMethod=  FireStoreServices.getProducts(title);
+
+        }
+
+  }
+
   var categoryController = Get.find<ProductController>();
+
+  dynamic productMethod;
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
       appBar: AppBar(
         title: widget.title!.text.white.fontFamily(bold).make(),
       ),
-      body: StreamBuilder(
-        stream: FireStoreServices.getProducts(widget.title) ,
-      builder: (BuildContext context, AsyncSnapshot <QuerySnapshot> snapshot){
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                  categoryController.subCat.length,
+                      (index) => categoryController.subCat[index].toString()
+                      .text
+                      .size(12)
+                      .fontFamily(semibold)
+                      .color(darkFontGrey)
+                      .makeCentered()
+                      .box
+                      .white
+                      .size(120, 60)
+                      .margin(const EdgeInsets.symmetric(horizontal: 4))
+                      .padding(const EdgeInsets.all(4))
+                      .outerShadowSm
+                      .roundedSM
+                      .make().onTap(() { 
+                        switchCategory(categoryController.subCat[index].toString());
+                        setState(() {
 
-          if(!snapshot.hasData)
-          {
-            return  Center(child: loadingIndicator());
-          }
-          else if(snapshot.data!.docs.isEmpty)// if data received is empty
-            {
-              return Center(
-                child: "No Products Found".text.size(20).color(darkFontGrey).fontFamily(semibold).make(),
-              );
-            }else
+                        });
+                      })),
+            ),
+          ),
+
+          20.heightBox,
+          StreamBuilder(
+            stream: productMethod ,
+          builder: (BuildContext context, AsyncSnapshot <QuerySnapshot> snapshot){
+
+              if(!snapshot.hasData)
               {
-                var data = snapshot.data!.docs;
+                return  Expanded(child: Center(child: loadingIndicator()));
+              }
+              else if(snapshot.data!.docs.isEmpty)// if data received is empty
+                {
+                  return Expanded(
+                    child: "No Products Found".text.color(darkFontGrey).fontFamily(semibold).makeCentered(),
+                  );
+                }else
+                  {
+                    var data = snapshot.data!.docs;
 
-                return Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: List.generate(
-                                categoryController.subCat.length,
-                                    (index) => categoryController.subCat[index].toString()
-                                    .text
-                                    .size(12)
-                                    .fontFamily(semibold)
-                                    .color(darkFontGrey)
-                                    .makeCentered()
-                                    .box
-                                    .white
-                                    .size(120, 60)
-                                    .margin(EdgeInsets.symmetric(horizontal: 4))
-                                    .padding(EdgeInsets.all(4))
-                                    .outerShadowSm
-                                    .roundedSM
-                                    .make()),
-                          ),
-                        ),
-                        20.heightBox,
+                    return
                         ///
                         /// itemContainer
                         Expanded(
@@ -124,11 +155,11 @@ class _CategoriesDetailsState extends State<CategoriesDetails> {
                               );
                             }),
                           ),
-                        )
-                      ],
-                    ));
-              }
-      },
+                        );
+                  }
+          },
+          ),
+        ],
       )
     ));
   }
