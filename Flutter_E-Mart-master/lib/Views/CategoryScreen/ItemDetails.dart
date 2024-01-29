@@ -313,6 +313,8 @@ class ItemDetails extends StatelessWidget {
                         ],
                       ).box.white.shadowSm.make(),
                     ),
+
+
                     10.heightBox,
                     "Description"
                         .text

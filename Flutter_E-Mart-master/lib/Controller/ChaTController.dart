@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/Controller/HomeContoller.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 import 'package:get/get.dart';
 
 class ChaTController extends GetxController {
@@ -16,7 +17,7 @@ class ChaTController extends GetxController {
   var friendId = Get.arguments[1];
 
   var senderName = Get.find<HomeController>().username;
-  var currentId = currentUser!.uid;
+  var currentId = SessionController().userId;
 
   var msgController = TextEditingController();
 

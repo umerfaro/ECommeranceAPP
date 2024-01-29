@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/Utils/Utils.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -74,7 +75,7 @@ class ProfileController extends GetxController {
   uploadImage() async {
     setLoading2(true);
     var filename= basename(profileImagePath.value);
-    var destination = 'images/${currentUser!.uid}/$filename';
+    var destination = 'images/${SessionController().userId}/$filename';
     Reference ref = FirebaseStorage.instance.ref().child(destination);
     await ref.putFile(File(profileImagePath.value));
     url = await ref.getDownloadURL();
@@ -98,7 +99,7 @@ class ProfileController extends GetxController {
       }
 
       // Update user profile information in Firestore
-      var store = firestore.collection(usersCollections).doc(currentUser!.uid);
+      var store = firestore.collection(usersCollections).doc(SessionController().userId);
       await store.set({
         'name': name,
         'PhoneNumber': phoneNumber,
@@ -133,7 +134,7 @@ class ProfileController extends GetxController {
       }
 
       // Update user profile information in Firestore
-      var store = firestore.collection(usersCollections).doc(currentUser!.uid);
+      var store = firestore.collection(usersCollections).doc(SessionController().userId);
       await store.set({
         'name': name,
         'photoUrl': url,

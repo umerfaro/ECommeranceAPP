@@ -104,7 +104,7 @@ class _HomeScreenState extends State<AccountScreen> {
                       5.heightBox,
 
                       FutureBuilder(
-                          future: FireStoreServices.getCounts(currentUser!.uid),
+                          future: FireStoreServices.getCounts(SessionController().userId.toString()),
                           builder: (BuildContext context, AsyncSnapshot snapshot){
 
                             if(!snapshot.hasData)

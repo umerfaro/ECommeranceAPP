@@ -3,7 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
 
-import "package:intl/intl.dart" as intl;// for time
+import "package:intl/intl.dart" as intl;
+
+import '../../../viewModel/Services/Session manager.dart';// for time
 
 Widget senderBubble(DocumentSnapshot data){
 
@@ -11,18 +13,18 @@ Widget senderBubble(DocumentSnapshot data){
 var time = intl.DateFormat("h:mma").format(t);
 
   return    Directionality(
-    textDirection: data['uid']==currentUser!.uid?TextDirection.rtl:TextDirection.ltr,
+    textDirection: data['uid']==SessionController().userId?TextDirection.rtl:TextDirection.ltr,
     child: Container(
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.only(bottom: 8),
 
       decoration:  BoxDecoration(
-        color: data['uid']==currentUser!.uid ?redColor : darkFontGrey,
+        color: data['uid']==SessionController().userId ?redColor : darkFontGrey,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(20),
           topRight: const Radius.circular(20),
-          bottomRight: Radius.circular(data['uid'] == currentUser!.uid ? 0 : 20),
-          bottomLeft: Radius.circular(data['uid'] == currentUser!.uid ? 20 : 0),
+          bottomRight: Radius.circular(data['uid'] == SessionController().userId ? 0 : 20),
+          bottomLeft: Radius.circular(data['uid'] == SessionController().userId ? 20 : 0),
 
         ),
 

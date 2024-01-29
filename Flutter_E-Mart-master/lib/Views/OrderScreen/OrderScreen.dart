@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
-import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
+import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../WidgetCommons/LoadingIndicator.dart';
 import 'orderDetails.dart';
@@ -19,7 +18,8 @@ class OrdersScreen extends StatelessWidget {
           title: "Orders".text.color(redColor).fontFamily(bold).make(),
         ),
         body: StreamBuilder(
-            stream: FireStoreServices.getOrders(currentUser!.uid),
+            stream: FireStoreServices.getOrders(SessionController().userId.toString()),
+
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {

@@ -6,7 +6,6 @@ import 'package:emart_app/Views/CategoryScreen/CategoryScreen.dart';
 import 'package:emart_app/Views/HomeScreen/HomeScreen.dart';
 import 'package:emart_app/WidgetCommons/exist_dialog.dart';
 import 'package:emart_app/consts/consts.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 class Home extends StatefulWidget {
   const Home({super.key});

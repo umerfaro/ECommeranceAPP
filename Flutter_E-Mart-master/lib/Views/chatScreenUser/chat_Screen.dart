@@ -3,9 +3,9 @@ import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../Controller/ChaTController.dart';
+import '../../viewModel/Services/Session manager.dart';
 import 'Compoents/SenderBubble.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 children: snapshot.data!.docs.mapIndexed((currentValue, index) {
                                 var data = snapshot.data!.docs[index];
                                   return Align(
-                                    alignment: data['uid'] == currentUser!.uid
+                                    alignment: data['uid'] == SessionController().userId
                                         ? Alignment.centerRight
                                         : Alignment.centerLeft,
                                       child: senderBubble(data));

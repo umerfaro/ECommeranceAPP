@@ -66,68 +66,71 @@ class OrderDetails extends StatelessWidget {
                           detail1: "Unpaid",
                           detail2: "Order Placed"),
                       Divider(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                "Shipping Address"
-                                    .text
-                                    .color(darkFontGrey)
-                                    .size(16)
-                                    .fontFamily(bold)
-                                    .make(),
-                                "Name: ${data["order_by_name"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "Email: ${data["order_by_email"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "Address: ${data["order_by_address"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "City: ${data["order_by_city"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "State: ${data["order_by_state"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "ZipCode :${data["order_by_zipCode"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                                "Phone number: ${data["order_by_phone"]}"
-                                    .text
-                                    .size(10)
-                                    .make(),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                "Total Amount"
-                                    .text
-                                    .size(16)
-                                    .color(darkFontGrey)
-                                    .fontFamily(bold)
-                                    .make(),
-                                "RS. ${data["total_price"]}"
-                                    .text
-                                    .color(redColor)
-                                    .make(),
-                              ],
-                            ),
-                          ],
+                      SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  "Shipping Address"
+                                      .text
+                                      .color(darkFontGrey)
+                                      .size(16)
+                                      .fontFamily(bold)
+                                      .make(),
+                                  "Name: ${data["order_by_name"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "Email: ${data["order_by_email"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "Address: ${data["order_by_address"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "City: ${data["order_by_city"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "State: ${data["order_by_state"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "ZipCode :${data["order_by_zipCode"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                  "Phone number: ${data["order_by_phone"]}"
+                                      .text
+                                      .size(10)
+                                      .make(),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  "Total Amount"
+                                      .text
+                                      .size(12)
+                                      .color(darkFontGrey)
+                                      .fontFamily(bold)
+                                      .make(),
+                                  "RS. ${data["total_price"]}"
+                                      .text
+                                      .color(redColor)
+                                      .make(),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

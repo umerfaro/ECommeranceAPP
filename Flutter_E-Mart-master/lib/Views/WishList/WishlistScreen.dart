@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
 
 import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
+import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 
 import '../../WidgetCommons/LoadingIndicator.dart';
 class WishListScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class WishListScreen extends StatelessWidget {
           title: "WishList".text.color(darkFontGrey).fontFamily(bold).make(),
         ),
         body: StreamBuilder(
-            stream: FireStoreServices.getWishList(currentUser!.uid),
+            stream: FireStoreServices.getWishList(SessionController().userId),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
               if(!snapshot.hasData)

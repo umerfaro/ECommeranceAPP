@@ -8,6 +8,7 @@ import '../../Controller/cartController.dart';
 import '../../Utils/Utils.dart';
 import '../../WidgetCommons/CustomButton.dart';
 import '../../viewModel/Services/FireStoreServices.dart';
+import '../../viewModel/Services/Session manager.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<CartScreen> {
           centerTitle: true,
         ),
         body: StreamBuilder(
-          stream: FireStoreServices.getCart(currentUser!.uid),
+          stream: FireStoreServices.getCart(SessionController().userId.toString()),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {

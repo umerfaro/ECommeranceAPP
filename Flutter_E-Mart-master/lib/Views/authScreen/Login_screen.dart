@@ -4,8 +4,7 @@ import 'package:emart_app/Views/HomeStructure/HomeStructureScreen.dart';
 import 'package:emart_app/WidgetCommons/CustomTextFormField.dart';
 import 'package:emart_app/viewModel/GoogleLogin/GoogleAuth.dart';
 import 'package:emart_app/viewModel/Services/Session%20manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
 import 'package:emart_app/WidgetCommons/CustomButton.dart';
 import 'package:emart_app/WidgetCommons/appLogo_widget.dart';
