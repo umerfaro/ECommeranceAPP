@@ -43,7 +43,7 @@ class OrderDetails extends StatelessWidget {
                       color: Colors.purple,
                       title: "Delivered",
                       showDone: data["order_delivered"]),
-                  Divider(),
+                  const Divider(),
                   10.heightBox,
                   Column(
                     children: [
@@ -65,9 +65,9 @@ class OrderDetails extends StatelessWidget {
                           title2: "Delivery Status",
                           detail1: "Unpaid",
                           detail2: "Order Placed"),
-                      Divider(),
+                      const Divider(),
                       SingleChildScrollView(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
@@ -172,7 +172,7 @@ class OrderDetails extends StatelessWidget {
                       .box
                       .outerShadowMd
                       .white
-                      .margin(EdgeInsets.only(bottom: 4))
+                      .margin(const EdgeInsets.only(bottom: 4))
                       .make(),
                   10.heightBox,
                   Column(
@@ -185,7 +185,7 @@ class OrderDetails extends StatelessWidget {
                               .color(darkFontGrey)
                               .fontFamily(bold)
                               .make(),
-                          Spacer(),
+                          const Spacer(),
                           "RS. ${data["total_price"]}"
                               .text
                               .color(redColor)
@@ -200,7 +200,7 @@ class OrderDetails extends StatelessWidget {
                               .color(darkFontGrey)
                               .fontFamily(bold)
                               .make(),
-                          Spacer(),
+                          const Spacer(),
                           "Null".text.color(redColor).make(),
                         ],
                       ),
@@ -212,7 +212,7 @@ class OrderDetails extends StatelessWidget {
                               .color(darkFontGrey)
                               .fontFamily(bold)
                               .make(),
-                          Spacer(),
+                          const Spacer(),
                           "Null".text.color(redColor).make(),
                         ],
                       ),

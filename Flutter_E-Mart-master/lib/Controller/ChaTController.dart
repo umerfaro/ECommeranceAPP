@@ -33,7 +33,8 @@ class ChaTController extends GetxController {
         .limit(1)
         .get()
         .then((QuerySnapshot snapshot) {
-          if (snapshot.docs.isNotEmpty) {
+          if (snapshot.docs.isNotEmpty)
+          {
             charDocId = snapshot.docs.single.id;
           } else {
             chats.add({

@@ -18,8 +18,8 @@ class OrdersScreen extends StatelessWidget {
           title: "Orders".text.color(redColor).fontFamily(bold).make(),
         ),
         body: StreamBuilder(
-            stream: FireStoreServices.getOrders(SessionController().userId.toString()),
-
+            stream: FireStoreServices.getOrders(
+                SessionController().userId.toString()),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
@@ -37,7 +37,12 @@ class OrdersScreen extends StatelessWidget {
                     itemCount: data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        leading: "${index+1}".text.xl.color(darkFontGrey).fontFamily(bold).make(),
+                        leading: "${index + 1}"
+                            .text
+                            .xl
+                            .color(darkFontGrey)
+                            .fontFamily(bold)
+                            .make(),
                         title: data[index]['order_code']
                             .toString()
                             .text

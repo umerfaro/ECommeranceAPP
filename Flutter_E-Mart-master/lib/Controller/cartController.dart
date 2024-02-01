@@ -26,6 +26,7 @@ class CartController extends GetxController {
 
   var placingOrder=false.obs;
 
+  var vendors = [];
 
   var checkCartEmpty = false;
 
@@ -66,6 +67,7 @@ class CartController extends GetxController {
       'order_confirmation': false,
       'order_delivered': false,
       'order_on_the_way': false,
+      'vendors': FieldValue.arrayUnion(vendors),
 
     });
     placingOrder(false);
@@ -74,6 +76,7 @@ class CartController extends GetxController {
 
   getProductDetails(){
     products.clear();
+    vendors.clear();
     for(var i=0;i<productSnapshot.length;i++){
 
       products.add({
@@ -84,6 +87,9 @@ class CartController extends GetxController {
         'vendor_id':productSnapshot[i]['vendor_id'],
         'totalPrice':productSnapshot[i]['totalPrice'],
       });
+      
+      vendors.add(productSnapshot[i]['vendor_id']);
+      
 
     }
 

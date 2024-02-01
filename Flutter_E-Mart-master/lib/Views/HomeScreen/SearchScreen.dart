@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -52,10 +53,15 @@ class SearchScreen extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.network(
-                                filter[index]['p_images'][0],
+
+                              CachedNetworkImage(
+                                imageUrl: filter[index]['p_images'][0],
                                 width: 200,
                                 height: 200,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Center(
+                                  child: loadingIndicator(),
+                                ),
                               ),
                               const Spacer(),
                               filter[index]['p_name'].toString()

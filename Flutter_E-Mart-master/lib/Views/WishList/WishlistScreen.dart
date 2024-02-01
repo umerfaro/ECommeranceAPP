@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
 
@@ -5,58 +6,63 @@ import 'package:emart_app/viewModel/Services/FireStoreServices.dart';
 import 'package:emart_app/viewModel/Services/Session%20manager.dart';
 
 import '../../WidgetCommons/LoadingIndicator.dart';
+
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         backgroundColor: whiteColor,
         appBar: AppBar(
           title: "WishList".text.color(darkFontGrey).fontFamily(bold).make(),
         ),
         body: StreamBuilder(
             stream: FireStoreServices.getWishList(SessionController().userId),
-            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-
-              if(!snapshot.hasData)
-              {
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
                 return Center(child: loadingIndicator());
-              }
-              else if(snapshot.data!.docs.isEmpty)
-              {
-                return "No Orders in Wishlist Yet!".text.size(20).color(darkFontGrey).fontFamily(semibold).makeCentered();
-
-              }
-              else
-              {
+              } else if (snapshot.data!.docs.isEmpty) {
+                return "No Orders in Wishlist Yet!"
+                    .text
+                    .size(20)
+                    .color(darkFontGrey)
+                    .fontFamily(semibold)
+                    .makeCentered();
+              } else {
                 var data = snapshot.data!.docs;
                 return Column(
                   children: [
                     Expanded(
                       child: ListView.builder(
-                        shrinkWrap: true,
+                          shrinkWrap: true,
                           itemCount: data.length,
-                          itemBuilder: (BuildContext context , int index){
+                          itemBuilder: (BuildContext context, int index) {
                             return ListTile(
-
                               contentPadding: const EdgeInsets.all(
                                   16.0), // Adjust padding as needed
-                              tileColor: Colors.white, // Set the background color
+                              tileColor:
+                                  Colors.white, // Set the background color
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     12.0), // Set border radius
                                 side: BorderSide(
-                                    color: Colors.grey[300]!), // Set border color
+                                    color:
+                                        Colors.grey[300]!), // Set border color
                               ),
                               leading: ClipRRect(
                                 borderRadius: BorderRadius.circular(
                                     8.0), // Set border radius for the image
-                                child: Image.network(
-                                  data[index]['p_images'][0].toString(),
-                                  width: 60.0,
-                                  height: 60.0,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      data[index]['p_images'][0].toString(),
+                                  width: 60,
+                                  height: 60,
                                   fit: BoxFit.cover,
+                                  placeholder: (context, url) => Center(
+                                    child: loadingIndicator(),
+                                  ),
                                 ),
                               ),
                               title: Column(
@@ -81,13 +87,18 @@ class WishListScreen extends StatelessWidget {
                                   .color(redColor)
                                   .make(),
                               trailing: IconButton(
-                                onPressed: () async
-                                {
-                               await firestore.collection(productCollections).doc(data[index].id).set({
-                                  'p_wishList':FieldValue.arrayRemove([currentUser!.uid])
-
-                                },SetOptions(merge: true));//set option merge as liya taka baki data ko replace nah kara
-
+                                onPressed: () async {
+                                  await firestore
+                                      .collection(productCollections)
+                                      .doc(data[index].id)
+                                      .set(
+                                          {
+                                        'p_wishList': FieldValue.arrayRemove(
+                                            [currentUser!.uid])
+                                      },
+                                          SetOptions(
+                                              merge:
+                                                  true)); //set option merge as liya taka baki data ko replace nah kara
                                 },
                                 icon: const Icon(
                                   Icons.favorite,
@@ -100,11 +111,6 @@ class WishListScreen extends StatelessWidget {
                   ],
                 );
               }
-
-            }
-        )
-
-
-    );
+            }));
   }
 }

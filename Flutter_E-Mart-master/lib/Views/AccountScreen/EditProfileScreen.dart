@@ -9,6 +9,8 @@ import 'package:emart_app/WidgetCommons/CustomTextFormField.dart';
 import 'package:emart_app/WidgetCommons/bg_widgt.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:get/get.dart';
+
+import '../../WidgetCommons/LoadingIndicator.dart';
 class EditProfileScreen extends StatefulWidget {
 
   final dynamic data;
@@ -61,6 +63,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 imageUrl: widget.data['photoUrl'],
                 width: 70,
                 fit: BoxFit.cover,
+            placeholder: (context, url) => Center(
+              child: loadingIndicator(),
+            ),
               ).box.roundedFull.clip(Clip.antiAlias).make()
                   : Image.file(
                 File(profileController.profileImagePath.value),

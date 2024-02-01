@@ -8,13 +8,12 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:get/get.dart';
 
 import '../../Utils/Utils.dart';
+import '../../WidgetCommons/LoadingIndicator.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
   final dynamic data;
   const ItemDetails({super.key, required this.title, this.data});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,30 +39,26 @@ class ItemDetails extends StatelessWidget {
                 productController.resetValues();
               },
               icon: const Icon(Icons.arrow_back_ios)),
-          title: title!.text.white
-              .fontFamily(semibold)
-              .color(darkFontGrey)
-              .make(),
+          title:
+              title!.text.white.fontFamily(semibold).color(darkFontGrey).make(),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
             Obx(
-              ()=> IconButton(
+              () => IconButton(
                   onPressed: () {
-                    if(productController.isFavorite.value) {
-                     productController.removeToWishList(data.id);
-                     productController.isFavorite.value=false;
+                    if (productController.isFavorite.value) {
+                      productController.removeToWishList(data.id);
+                      productController.isFavorite.value = false;
+                    } else {
+                      productController.addToWishList(data.id);
                     }
-                    else
-                      {
-                        productController.addToWishList(data.id);
-
-                      }
-
-                  }, icon:  Icon(
-                Icons.favorite_outlined,
-                color: productController.isFavorite.value?redColor:darkFontGrey,
-
-              )),
+                  },
+                  icon: Icon(
+                    Icons.favorite_outlined,
+                    color: productController.isFavorite.value
+                        ? redColor
+                        : darkFontGrey,
+                  )),
             ),
           ],
         ),
@@ -89,6 +84,9 @@ class ItemDetails extends StatelessWidget {
                           imageUrl: data["p_images"][index],
                           width: double.infinity,
                           fit: BoxFit.fill,
+                          placeholder: (context, url) => Center(
+                            child: loadingIndicator(),
+                          ),
                         )
                             .box
                             .clip(Clip.antiAlias)
@@ -108,8 +106,7 @@ class ItemDetails extends StatelessWidget {
                     Row(
                       children: [
                         VxRating(
-                          value:
-                              double.parse(data['p_rating'].toString()),
+                          value: double.parse(data['p_rating'].toString()),
                           onRatingUpdate: (value) {},
                           normalColor: textfieldGrey,
                           selectionColor: golden,
@@ -161,19 +158,16 @@ class ItemDetails extends StatelessWidget {
                         Hero(
                           tag: 'chat_button', // Unique tag for chat_button
                           child: const CircleAvatar(
-
                             backgroundColor: whiteColor,
                             child: Icon(
                               Icons.message_rounded,
                               color: darkFontGrey,
                             ),
                           ).onTap(() {
-                            Get.to( ()=> const ChatScreen(),
-                            arguments: [
+                            Get.to(() => const ChatScreen(), arguments: [
                               data['p_seller'],
                               data['vendor_id'],
-                            ]
-                            );
+                            ]);
                           }),
                         )
                       ],
@@ -207,8 +201,7 @@ class ItemDetails extends StatelessWidget {
                                                 .size(40, 40)
                                                 .roundedFull
                                                 .color(Color(
-                                                        data['p_colors']
-                                                            [index])
+                                                        data['p_colors'][index])
                                                     .withOpacity(1.0))
                                                 .margin(
                                                     const EdgeInsets.symmetric(
@@ -249,8 +242,7 @@ class ItemDetails extends StatelessWidget {
                                         onPressed: () {
                                           productController.decrement();
                                           productController.calculateTotalPrice(
-                                              int.parse(
-                                                  data['p_price']));
+                                              int.parse(data['p_price']));
                                         },
                                         icon: const Icon(
                                           Icons.remove_circle_outline,
@@ -264,11 +256,10 @@ class ItemDetails extends StatelessWidget {
                                         .make(),
                                     IconButton(
                                         onPressed: () {
-                                          productController.increment(int.parse(
-                                              data['p_quantity']));
+                                          productController.increment(
+                                              int.parse(data['p_quantity']));
                                           productController.calculateTotalPrice(
-                                              int.parse(
-                                                  data['p_price']));
+                                              int.parse(data['p_price']));
                                         },
                                         icon: const Icon(
                                           Icons.add_circle_outline,
@@ -313,7 +304,6 @@ class ItemDetails extends StatelessWidget {
                         ],
                       ).box.white.shadowSm.make(),
                     ),
-
 
                     10.heightBox,
                     "Description"

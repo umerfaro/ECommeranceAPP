@@ -71,6 +71,9 @@ class _HomeScreenState extends State<AccountScreen> {
                             imageUrl: data['photoUrl'].toString(),
                             width: 70,
                             fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: loadingIndicator(),
+                            ),
                           ).box.roundedFull.clip(Clip.antiAlias).make(),
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

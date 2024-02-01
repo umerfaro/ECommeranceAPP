@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/Views/CartScreen/shippin_screen.dart';
 import 'package:emart_app/WidgetCommons/LoadingIndicator.dart';
@@ -50,7 +51,8 @@ class _HomeScreenState extends State<CartScreen> {
           centerTitle: true,
         ),
         body: StreamBuilder(
-          stream: FireStoreServices.getCart(SessionController().userId.toString()),
+          stream:
+              FireStoreServices.getCart(SessionController().userId.toString()),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -108,11 +110,14 @@ class _HomeScreenState extends State<CartScreen> {
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(
                                 8.0), // Set border radius for the image
-                            child: Image.network(
-                              data[index]['img'].toString(),
+                            child: CachedNetworkImage(
+                              imageUrl: data[index]['img'].toString(),
                               width: 60.0,
                               height: 60.0,
                               fit: BoxFit.cover,
+                              placeholder: (context, url) => Center(
+                                child: loadingIndicator(),
+                              ),
                             ),
                           ),
                           title: Column(
@@ -181,7 +186,6 @@ class _HomeScreenState extends State<CartScreen> {
                     .roundedSM
                     .make(),
                 10.heightBox,
-
               ]);
             } else {
               return Container();

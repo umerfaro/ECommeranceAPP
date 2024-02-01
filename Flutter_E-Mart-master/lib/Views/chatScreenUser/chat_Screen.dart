@@ -92,7 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         chatController.sendMsg(chatController.msgController.text);
                         chatController.msgController.clear();
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.send,
                         color: redColor,
                       )),
@@ -100,8 +100,8 @@ class _ChatScreenState extends State<ChatScreen> {
               )
                   .box
                   .height(80)
-                  .padding(EdgeInsets.all(12))
-                  .margin(EdgeInsets.only(bottom: 8))
+                  .padding(const EdgeInsets.all(12))
+                  .margin(const EdgeInsets.only(bottom: 8))
                   .make(),
             ],
           ),

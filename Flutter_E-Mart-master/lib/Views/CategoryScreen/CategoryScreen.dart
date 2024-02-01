@@ -37,6 +37,7 @@ class CategoryScreen extends StatelessWidget {
                   tag: 'category_image$index',
                   child: Column(
                       children: [
+
                         Image.asset(
                           categoryListPic[index],
                           width: 200,
